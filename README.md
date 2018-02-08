@@ -6,11 +6,11 @@
 ## 2. firebase
 * react + webpack + firebase
 TODO: 
-> webpack: sass loader / alias
-> react folder structure : components / containers / public / assets
-> adapter firebase
-> redux
+> adapter firebase and deploy
+> add component/container
+> webpack: sass loader / file loader / alias
 > react-router
+> redux
 
 
 ---
