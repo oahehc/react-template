@@ -1,16 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: `${__dirname}/app/index.html`,
-  filename: 'index.html',
-  inject: 'body',
-});
+const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({template: `${__dirname}/app/index.html`, filename: 'index.html', inject: 'body'});
 module.exports = {
-  entry: [
-    './app/index.js',
-  ],
+  entry: ['./app/index.js'],
   output: {
     path: `${__dirname}/dist`,
-    filename: 'index_bundle.js',
+    filename: 'index_bundle.js'
   },
   module: {
     loaders: [
@@ -19,14 +13,14 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react', 'stage-3'],
-        },
-      },
-    ],
+          presets: ['es2015', 'react', 'stage-3']
+        }
+      }
+    ]
   },
   devServer: {
     inline: true,
-    port: 8008,
+    port: 8008
   },
-  plugins: [HTMLWebpackPluginConfig],
+  plugins: [HTMLWebpackPluginConfig]
 };

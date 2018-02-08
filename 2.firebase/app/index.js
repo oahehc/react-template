@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
   render() {
     return (
@@ -14,4 +13,5 @@ class App extends React.Component {
     );
   }
 }
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <App/>, document.getElementById('app'));
