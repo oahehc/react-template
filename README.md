@@ -8,7 +8,7 @@
 TODO: 
 > adapter firebase and deploy
 > add component/container
-> webpack: sass loader / file loader / alias
+> webpack: sass loader / file loader
 > react-router
 > redux
 

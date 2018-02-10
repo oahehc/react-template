@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "app-root-dir": "^1.0.2",
+    "lodash": "^4.17.5",
     "prop-types": "15.5.10",
     "react": "15.6.1",
     "react-dom": "15.6.1"
