@@ -1,8 +1,11 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const appRootPath = require('app-root-dir').get();
+const isDev = process.env.NODE_ENV === 'development';
 console.log('ENV:', process.env.NODE_ENV);
+
 module.exports = {
   entry: ['./app/index.js'],
   output: {
@@ -11,6 +14,7 @@ module.exports = {
   },
   module: {
     loaders: [
+      // javascript
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -18,7 +22,63 @@ module.exports = {
         query: {
           presets: ['es2015', 'react', 'stage-3']
         }
-      }
+      },
+      // SCSS, TODO: seperate node_modules version, remove hash
+      {
+        test: /\.(scss|css)$/,
+        include: [
+          path.resolve(appRootPath, './app'),
+          '/node_modules/'
+        ],
+        use: (isDev) ? [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]_[local]_[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+        :
+        ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[name]_[local]_[hash:base64:5]'
+              }
+            },
+            'postcss-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            }
+          ]
+        }),
+      },
+      // Images / Fonts
+      {
+        test: /\.(jpg|jpeg|png|gif|ico|eot|svg|ttf|woff|woff2|otf)$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          emitFile: true,
+        },
+      },
     ]
   },
   devServer: {
@@ -40,10 +100,12 @@ module.exports = {
       Utils: path.resolve(appRootPath, './app/utils')
     }
   },
+  devtool: (isDev) ? 'source-map' : 'hidden-source-map', // eval
   plugins: [
     new HtmlWebpackPlugin({template: `${__dirname}/app/index.html`, filename: 'index.html', inject: 'body'}),
     new webpack.DefinePlugin({
-      DEV_MODE: process.env.NODE_ENV === 'development'
-    })
-  ]
+      isDev,
+    }),
+    (isDev) ? new ExtractTextPlugin({ filename: '[name]-[hash].css', allChunks: true }) : '',
+  ],
 };

@@ -7,6 +7,7 @@
 |  |- toolbox      // common use component
 |  |- styles       // scss
 |  |- utils        // helper funtion
+|  |- api          // third party api
 |  |- redux        // 
 |     |- store
 |     |- reducers

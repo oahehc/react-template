@@ -1,0 +1,34 @@
+// bootstrap color
+$bsRed: #d9534f;
+$bspWhite: #f9f9f9;
+$bsBlue: #428bca;
+$bsLightblue: #5bc0de;
+$bsGreen: #5cb85c;
+$bsYellow: #f0ad4e;
+
+// mixin
+$mobile: 768px;
+$pad: 992px;
+$dt: 1200px;
+@mixin mainRwd($width) {
+    @media only screen and (max-width: $width) {
+        @content;
+    }
+}
+
+@mixin fullScreenCenter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin verticalCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

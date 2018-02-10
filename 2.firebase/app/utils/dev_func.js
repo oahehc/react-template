@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export const log = (DEV_MODE)
+export const log = (isDev)
   ? console
     .log
     .bind(window.console)
