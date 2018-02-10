@@ -1,3 +1,12 @@
+TODO: 
+> adapter firebase and deploy
+> add component/container
+> webpack: sass loader / file loader
+> react-router
+> redux
+
+---
+
 ## Project Structure
 ```
 /
@@ -19,7 +28,8 @@
 
 ## Script
 ```
-yarn dev: 
-yarn build: 
-yarn start: 
+yarn dev      : 
+yarn dev:prod : 
+yarn build    : 
+yarn start    : 
 ```
