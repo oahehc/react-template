@@ -11,7 +11,7 @@ class Layout extends Component {
 
 	render() {
 		return ( 
-				<div className={styles.layout}> test </div>
+			<div className={styles.layout}> test </div>
 		);
 	}
 }
