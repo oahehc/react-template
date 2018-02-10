@@ -4,11 +4,13 @@
   "description": "react, webpack, firebase",
   "main": "./app/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build"
+    "dev": "set NODE_ENV=development& webpack-dev-server --devtool eval --progress --colors --content-base build",
+    "dev:prod": "set NODE_ENV=production& webpack-dev-server --devtool eval --progress --colors --content-base build"
   },
   "author": "oahehc",
   "license": "MIT",
   "dependencies": {
+    "app-root-dir": "^1.0.2",
     "prop-types": "15.5.10",
     "react": "15.6.1",
     "react-dom": "15.6.1"
