@@ -5,7 +5,8 @@
   "main": "./app/index.js",
   "scripts": {
     "dev": "set NODE_ENV=development& webpack-dev-server --devtool eval --progress --colors --content-base build",
-    "dev:prod": "set NODE_ENV=production& webpack-dev-server --devtool eval --progress --colors --content-base build"
+    "dev:prod": "set NODE_ENV=production& webpack-dev-server --devtool eval --progress --colors --content-base build",
+    "build": "set NODE_ENV=production& webpack"
   },
   "author": "oahehc",
   "license": "MIT",

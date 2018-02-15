@@ -106,6 +106,6 @@ module.exports = {
     new webpack.DefinePlugin({
       isDev,
     }),
-    (isDev) ? new ExtractTextPlugin({ filename: '[name]-[hash].css', allChunks: true }) : '',
+    new ExtractTextPlugin({ filename: '[name]-[hash].css', allChunks: !isDev }),
   ],
 };

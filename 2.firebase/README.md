@@ -1,3 +1,13 @@
+
+
+---
+TODO:
+build
+hot repload
+deploy script
+
+---
+
 ## Project Structure
 ```
 /

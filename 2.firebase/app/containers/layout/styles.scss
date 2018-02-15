@@ -1,3 +1,5 @@
+@import "~Styles/variables";
+
 *,
 input,
 button {
@@ -6,4 +8,5 @@ button {
 
 .layout{
   font-size: 24px;
+  color: $bsRed;
 }
