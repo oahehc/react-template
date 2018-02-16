@@ -1,5 +1,5 @@
 import {log} from 'Utils/dev_func';
-
+/*
 export const fbSignUp = () => {
   return new Promise((resolve, reject) => {
     const provider = new firebase
@@ -18,8 +18,9 @@ export const fbSignUp = () => {
       });
   });
 }
-
+*/
 export const googleSignUp = () => {
+  log('API googleSignUp')
   return new Promise((resolve, reject) => {
     const provider = new firebase
       .auth

@@ -8,9 +8,8 @@ class App extends React.Component {
     this.state = {};
   }
   render() {
-    return (
-      <Layout />
-    );
+    return (<Layout/>);
   }
 }
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(
+  <App/>, document.getElementById('app'));

@@ -1,10 +1,7 @@
 
 TODO:
-hot repload
-deploy script
 > adapter firebase and deploy
-> add component/container
-> webpack: sass loader / file loader
+> webpack: hot repload
 > react-router
 > redux
 
