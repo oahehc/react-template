@@ -20,7 +20,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react', 'stage-3']
+          presets: [
+            'es2015', 'react', 'stage-3'
+          ],
+          plugins: ['transform-object-rest-spread', 'transform-es2015-destructuring', 'transform-class-properties', 'transform-decorators-legacy']
         }
       },
       // SCSS, TODO: seperate node_modules version, remove hash
@@ -30,45 +33,43 @@ module.exports = {
           path.resolve(appRootPath, './app'),
           '/node_modules/'
         ],
-        use: (isDev) ? [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[name]_[local]_[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'postcss-loader',
-          },
-          {
-            loader: 'sass-loader'
-          }
-        ]
-        :
-        ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
+        use: (isDev)
+          ? [
             {
+              loader: 'style-loader'
+            }, {
               loader: 'css-loader',
               options: {
-                sourceMap: true,
                 modules: true,
                 importLoaders: 1,
                 localIdentName: '[name]_[local]_[hash:base64:5]'
               }
-            },
-            'postcss-loader',
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
+            }, {
+              loader: 'postcss-loader'
+            }, {
+              loader: 'sass-loader'
             }
           ]
-        }),
+          : ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true,
+                  modules: true,
+                  importLoaders: 1,
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+                }
+              },
+              'postcss-loader', {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true
+                }
+              }
+            ]
+          })
       },
       // Images / Fonts
       {
@@ -76,9 +77,9 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          emitFile: true,
-        },
-      },
+          emitFile: true
+        }
+      }
     ]
   },
   devServer: {
@@ -100,12 +101,15 @@ module.exports = {
       Utils: path.resolve(appRootPath, './app/utils')
     }
   },
-  devtool: (isDev) ? 'source-map' : 'hidden-source-map', // eval
+  devtool: (isDev)
+    ? 'source-map'
+    : 'hidden-source-map', // eval
   plugins: [
     new HtmlWebpackPlugin({template: `${__dirname}/app/index.html`, filename: 'index.html', inject: 'body'}),
-    new webpack.DefinePlugin({
-      isDev,
-    }),
-    new ExtractTextPlugin({ filename: '[name]-[hash].css', allChunks: !isDev }),
-  ],
+    new webpack.DefinePlugin({isDev}),
+    new ExtractTextPlugin({
+      filename: '[name]-[hash].css',
+      allChunks: !isDev
+    })
+  ]
 };

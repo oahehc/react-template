@@ -1,8 +1,11 @@
 
 TODO:
-> webpack: hot repload
 > react-router
+  - sign up relocate
+  - with token auto relocate
+  - without token back to root
 > redux
+> webpack: hot repload
 
 ---
 
@@ -28,8 +31,9 @@ TODO:
 
 ## Script
 ```
-yarn dev      : 
-yarn dev:prod : 
-yarn build    : 
-yarn start    : 
+yarn dev        : 
+yarn dev:prod   : 
+yarn reinstall  : 
+yarn build      : 
+yarn deploy     : 
 ```

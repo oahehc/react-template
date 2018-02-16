@@ -1,21 +1,39 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
-import {googleSignUp} from 'Api/firebase';
 
-class Layout extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  componentDidMount() {}
+module.exports = function (WrappedComponent, options = {}) {
+  const {
+    hasHeader = false,
+    hasFooter = false
+  } = options;
+  class Layout extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
 
-  render() {
-    return (
-      <div className={styles.layout}>
-        <button onClick={() => googleSignUp()}>Sign Up</button>
-      </div>
-    );
+    componentDidMount() {}
+
+    renderHeader = () => {
+      return (<div className={styles.header}/>)
+    }
+
+    renderFooter = () => {
+      return (<div className={styles.footer}/>)
+    }
+
+    render() {
+      return (
+        <div>
+          {hasHeader && this.renderHeader()}
+          <div className={styles.content}>
+            <WrappedComponent {...this.props}/>
+          </div>
+          {hasFooter && this.renderFooter()}
+        </div>
+      );
+    }
   }
-}
-export default Layout;
+  return Layout;
+};
