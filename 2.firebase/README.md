@@ -1,6 +1,5 @@
 
 TODO:
-> adapter firebase and deploy
 > webpack: hot repload
 > react-router
 > redux
