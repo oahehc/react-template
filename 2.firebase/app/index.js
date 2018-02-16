@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Layout from 'Containers/layout';
+import HomePage from 'Containers/HomePage';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class App extends React.Component {
     this.state = {};
   }
   render() {
-    return (<Layout/>);
+    return (<HomePage/>);
   }
 }
 ReactDOM.render(

@@ -11,7 +11,7 @@ class SignupPage extends Component {
 
   render() {
     return (
-      <div></div>
+      <div>SignUp</div>
     );
   }
 }

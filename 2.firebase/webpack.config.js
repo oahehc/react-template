@@ -7,9 +7,17 @@ const isDev = process.env.NODE_ENV === 'development';
 console.log('ENV:', process.env.NODE_ENV);
 
 module.exports = {
-  entry: ['./app/index.js'],
+  entry: removeEmpty([
+    (isDev)
+      ? 'webpack-dev-server/client?http://localhost:8008'
+      : '',
+    (isDev)
+      ? 'webpack/hot/only-dev-server'
+      : '',
+    path.resolve(__dirname, './app/index.js')
+  ]),
   output: {
-    path: `${__dirname}/dist`,
+    path: path.resolve(__dirname, './dist'),
     filename: 'index_bundle.js'
   },
   module: {
@@ -23,7 +31,15 @@ module.exports = {
           presets: [
             'es2015', 'react', 'stage-3'
           ],
-          plugins: ['transform-object-rest-spread', 'transform-es2015-destructuring', 'transform-class-properties', 'transform-decorators-legacy']
+          plugins: removeEmpty([
+            (isDev)
+              ? 'react-hot-loader/babel'
+              : '',
+            'transform-object-rest-spread',
+            'transform-es2015-destructuring',
+            'transform-class-properties',
+            'transform-decorators-legacy'
+          ])
         }
       },
       // SCSS, TODO: seperate node_modules version, remove hash
@@ -104,12 +120,18 @@ module.exports = {
   devtool: (isDev)
     ? 'source-map'
     : 'hidden-source-map', // eval
-  plugins: [
+  plugins: removeEmpty([
     new HtmlWebpackPlugin({template: `${__dirname}/app/index.html`, filename: 'index.html', inject: 'body'}),
     new webpack.DefinePlugin({isDev}),
-    new ExtractTextPlugin({
-      filename: '[name]-[hash].css',
-      allChunks: !isDev
-    })
-  ]
+    (!isDev)
+      ? new ExtractTextPlugin({filename: '[name]-[hash].css', allChunks: true})
+      : '',
+    (isDev)
+      ? new webpack.NoEmitOnErrorsPlugin()
+      : ''
+  ])
 };
+
+function removeEmpty(x) {
+  return x.filter(y => !!y);
+}
