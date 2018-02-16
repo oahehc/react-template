@@ -5,12 +5,6 @@
 
 ## 2. firebase
 * react + webpack + firebase
-TODO: 
-> adapter firebase and deploy
-> add component/container
-> webpack: sass loader / file loader
-> react-router
-> redux
 
 
 ---

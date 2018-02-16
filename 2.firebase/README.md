@@ -1,10 +1,12 @@
 
-
----
 TODO:
-build
 hot repload
 deploy script
+> adapter firebase and deploy
+> add component/container
+> webpack: sass loader / file loader
+> react-router
+> redux
 
 ---
 
@@ -30,7 +32,8 @@ deploy script
 
 ## Script
 ```
-yarn dev: 
-yarn build: 
-yarn start: 
+yarn dev      : 
+yarn dev:prod : 
+yarn build    : 
+yarn start    : 
 ```
