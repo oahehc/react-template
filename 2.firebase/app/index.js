@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, HashRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Layout from 'Containers/Layout';
 import HomePage from 'Containers/HomePage';
 import SignupPage from 'Containers/SignupPage';
@@ -13,7 +13,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <Switch>
           <Route
             exact
@@ -25,7 +25,7 @@ class App extends React.Component {
             component={Layout(SignupPage)}
           />
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }

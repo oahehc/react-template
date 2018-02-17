@@ -30,6 +30,19 @@
 	<script type="application/ld+json">
 		{}
 	</script>
+	<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		const config = {
+			apiKey: "AIzaSyDcfNBAPAT9mj6Z3jnFqTmYaXbWuSkgyN0",
+			authDomain: "reactsignup-a810b.firebaseapp.com",
+			databaseURL: "https://reactsignup-a810b.firebaseio.com",
+			projectId: "reactsignup-a810b",
+			storageBucket: "reactsignup-a810b.appspot.com",
+			messagingSenderId: "340107187360"
+		};
+		firebase.initializeApp(config);
+	</script>
 	<title>React Template</title>
 </head>
 
@@ -37,18 +50,5 @@
 	<div id="app"></div>
 </body>
 
-<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
-<script>
-	// Initialize Firebase
-	const config = {
-		apiKey: "AIzaSyDcfNBAPAT9mj6Z3jnFqTmYaXbWuSkgyN0",
-		authDomain: "reactsignup-a810b.firebaseapp.com",
-		databaseURL: "https://reactsignup-a810b.firebaseio.com",
-		projectId: "reactsignup-a810b",
-		storageBucket: "reactsignup-a810b.appspot.com",
-		messagingSenderId: "340107187360"
-	};
-	firebase.initializeApp(config);
-</script>
 
 </html>

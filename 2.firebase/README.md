@@ -1,8 +1,6 @@
 
 TODO:
-> react-router
-  - authCheck after firebase init
-> redux
+> redux : 
 > react-router-redux : https://github.com/reacttraining/react-router/tree/master/packages/react-router-redux
 > webpack
   - hot reload
