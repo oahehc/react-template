@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {HashRouter, Route, Link} from 'react-router-dom';
 import HomePage from 'Containers/HomePage';
+import SignupPage from 'Containers/SignupPage';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,7 +10,14 @@ class App extends React.Component {
     this.state = {};
   }
   render() {
-    return (<HomePage/>);
+    return (
+      <HashRouter>
+        <div>
+          <Route exact path="/" component={HomePage}/>
+          <Route path="/signup" component={SignupPage}/>
+        </div>
+      </HashRouter>
+    );
   }
 }
 ReactDOM.render(

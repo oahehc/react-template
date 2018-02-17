@@ -5,7 +5,9 @@ TODO:
   - with token auto relocate
   - without token back to root
 > redux
-> webpack: hot repload
+> webpack
+  - hot reload
+  - vender_bundle
 
 ---
 
