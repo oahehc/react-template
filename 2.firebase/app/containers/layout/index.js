@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import styles from './styles.scss';
 
 module.exports = function (WrappedComponent, options = {}) {
@@ -16,7 +17,18 @@ module.exports = function (WrappedComponent, options = {}) {
     componentDidMount() {}
 
     renderHeader = () => {
-      return (<div className={styles.header}/>)
+      return (
+        <div className={styles.header}>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/signup">SignUp</Link>
+            </li>
+          </ul>
+        </div>
+      )
     }
 
     renderFooter = () => {

@@ -8,7 +8,6 @@ TODO:
 > webpack
   - hot reload
   - vender_bundle
-
 ---
 
 ## Project Structure
