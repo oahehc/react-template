@@ -1,12 +1,16 @@
 
 TODO:
 > react-router
-  - sign up relocate
-  - with token auto relocate
+  - authCheck after firebase init
+  - sign out relocate
 > redux
+> react-router-redux : https://github.com/reacttraining/react-router/tree/master/packages/react-router-redux
 > webpack
   - hot reload
   - vender_bundle
+> eslint
+  - arrow function
+  - decorator
 ---
 
 ## Project Structure

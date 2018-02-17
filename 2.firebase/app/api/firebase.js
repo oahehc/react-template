@@ -1,4 +1,4 @@
-import {log} from 'Utils/dev_func';
+import { log } from 'Utils/dev_func';
 /*
 export const fbSignUp = () => {
   return new Promise((resolve, reject) => {
@@ -22,12 +22,8 @@ export const fbSignUp = () => {
 export const googleSignUp = () => {
   log('API googleSignUp')
   return new Promise((resolve, reject) => {
-    const provider = new firebase
-      .auth
-      .GoogleAuthProvider();
-    firebase
-      .auth()
-      .signInWithPopup(provider)
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
       .then((result) => {
         log('google signup success', result);
         resolve(result);
@@ -36,5 +32,15 @@ export const googleSignUp = () => {
         log('[ERROR] google signup', err);
         reject(err);
       });
+  });
+}
+
+export const authCheck = () => {
+  return new Promise((resolve, reject) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      log('authCheck', user);
+      if (user) resolve(true);
+      resolve(false)
+    });
   });
 }

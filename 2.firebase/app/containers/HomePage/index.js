@@ -7,11 +7,15 @@ class HomePage extends Component {
     super(props);
     this.state = {};
   }
-  componentDidMount() { }
+  componentDidMount() {
+    // if (!hasToken()) this.props.history.push('./signup');
+  }
 
   render() {
     return (
-      <div>HomePage</div>
+      <div className={styles.home}>
+        HomePage
+      </div>
     );
   }
 }

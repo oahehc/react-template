@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const appRootPath = require('app-root-dir').get();
+
 const isDev = process.env.NODE_ENV === 'development';
 console.log('ENV:', process.env.NODE_ENV);
 
@@ -14,11 +15,11 @@ module.exports = {
     (isDev)
       ? 'webpack/hot/only-dev-server'
       : '',
-    path.resolve(__dirname, './app/index.js')
+    path.resolve(__dirname, './app/index.js'),
   ]),
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
   },
   module: {
     loaders: [
@@ -29,7 +30,7 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: [
-            'es2015', 'react', 'stage-3'
+            'es2015', 'react', 'stage-0',
           ],
           plugins: removeEmpty([
             (isDev)
@@ -37,8 +38,8 @@ module.exports = {
               : '',
             'transform-object-rest-spread',
             'transform-es2015-destructuring',
+            'transform-decorators-legacy',
             'transform-class-properties',
-            'transform-decorators-legacy'
           ])
         }
       },
@@ -47,24 +48,24 @@ module.exports = {
         test: /\.(scss|css)$/,
         include: [
           path.resolve(appRootPath, './app'),
-          '/node_modules/'
+          '/node_modules/',
         ],
         use: (isDev)
           ? [
             {
-              loader: 'style-loader'
+              loader: 'style-loader',
             }, {
               loader: 'css-loader',
               options: {
                 modules: true,
                 importLoaders: 1,
-                localIdentName: '[name]_[local]_[hash:base64:5]'
-              }
+                localIdentName: '[name]_[local]_[hash:base64:5]',
+              },
             }, {
-              loader: 'postcss-loader'
+              loader: 'postcss-loader',
             }, {
-              loader: 'sass-loader'
-            }
+              loader: 'sass-loader',
+            },
           ]
           : ExtractTextPlugin.extract({
             fallback: 'style-loader',
@@ -75,17 +76,17 @@ module.exports = {
                   sourceMap: true,
                   modules: true,
                   importLoaders: 1,
-                  localIdentName: '[name]_[local]_[hash:base64:5]'
-                }
+                  localIdentName: '[name]_[local]_[hash:base64:5]',
+                },
               },
               'postcss-loader', {
                 loader: 'sass-loader',
                 options: {
-                  sourceMap: true
-                }
-              }
-            ]
-          })
+                  sourceMap: true,
+                },
+              },
+            ],
+          }),
       },
       // Images / Fonts
       {
@@ -93,18 +94,18 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          emitFile: true
-        }
-      }
-    ]
+          emitFile: true,
+        },
+      },
+    ],
   },
   devServer: {
     inline: true,
-    port: 8008
+    port: 8008,
   },
   resolve: {
     extensions: [
-      '.scss', '.js', '.jsx', '.json'
+      '.scss', '.js', '.jsx', '.json',
     ],
     alias: {
       Api: path.resolve(appRootPath, './app/api'),
@@ -114,22 +115,22 @@ module.exports = {
       Routes: path.resolve(appRootPath, './app/routes'),
       Styles: path.resolve(appRootPath, './app/styles'),
       Toolbox: path.resolve(appRootPath, './app/toolbox'),
-      Utils: path.resolve(appRootPath, './app/utils')
+      Utils: path.resolve(appRootPath, './app/utils'),
     }
   },
   devtool: (isDev)
     ? 'source-map'
     : 'hidden-source-map', // eval
   plugins: removeEmpty([
-    new HtmlWebpackPlugin({template: `${__dirname}/app/index.html`, filename: 'index.html', inject: 'body'}),
-    new webpack.DefinePlugin({isDev}),
+    new HtmlWebpackPlugin({ template: `${__dirname}/app/index.html`, filename: 'index.html', inject: 'body' }),
+    new webpack.DefinePlugin({ isDev }),
     (!isDev)
-      ? new ExtractTextPlugin({filename: '[name]-[hash].css', allChunks: true})
+      ? new ExtractTextPlugin({ filename: '[name]-[hash].css', allChunks: true })
       : '',
     (isDev)
       ? new webpack.NoEmitOnErrorsPlugin()
-      : ''
-  ])
+      : '',
+  ]),
 };
 
 function removeEmpty(x) {

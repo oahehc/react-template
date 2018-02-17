@@ -23,9 +23,6 @@ module.exports = function (WrappedComponent, options = {}) {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/auth">Auth Check</Link>
-            </li>
-            <li>
               <Link to="/signup">SignUp</Link>
             </li>
           </ul>
