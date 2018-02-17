@@ -11,24 +11,24 @@ $mobile: 768px;
 $pad: 992px;
 $dt: 1200px;
 @mixin mainRwd($width) {
-    @media only screen and (max-width: $width) {
-        @content;
-    }
+  @media only screen and (max-width: $width) {
+    @content;
+  }
 }
 
 @mixin fullScreenCenter {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin verticalCenter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

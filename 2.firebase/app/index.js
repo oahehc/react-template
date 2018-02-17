@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, HashRouter, Redirect } from 'react-router-dom';
 import Layout from 'Containers/Layout';
 import HomePage from 'Containers/HomePage';
 import SignupPage from 'Containers/SignupPage';
@@ -10,14 +10,32 @@ class App extends React.Component {
     super(props);
     this.state = {};
   }
+
+  authCheck = (component) => {
+    const hasToken = false; // TODO:
+    if (!hasToken) return <Redirect to="/signup" />;
+    return component;
+  }
+
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
-          <Route exact path="/" component={Layout(HomePage, { hasHeader: true })} />
-          <Route path="/signup" component={Layout(SignupPage)} />
+          <Route
+            exact
+            path="/"
+            component={Layout(HomePage, { hasHeader: true })}
+          />
+          <Route
+            path="/auth"
+            render={() => this.authCheck(Layout(HomePage), { hasHeader: true })}
+          />
+          <Route
+            path="/signup"
+            component={Layout(SignupPage)}
+          />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

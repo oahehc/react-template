@@ -3,7 +3,6 @@ TODO:
 > react-router
   - sign up relocate
   - with token auto relocate
-  - without token back to root
 > redux
 > webpack
   - hot reload
