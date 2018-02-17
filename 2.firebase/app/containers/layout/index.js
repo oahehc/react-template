@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { signOut } from 'Api/firebase';
 import styles from './styles.scss';
 
 module.exports = function (WrappedComponent, options = {}) {
@@ -15,9 +16,23 @@ module.exports = function (WrappedComponent, options = {}) {
       this.state = {};
     }
 
+    handleSignOut = () => {
+      signOut().then((res) => {
+        this.props.history.push('./signup');
+      })
+    }
+
     renderHeader = () => {
       return (
         <div className={styles.header}>
+          <button onClick={() => this.handleSignOut()}>Sign Out</button>
+        </div>
+      )
+    }
+
+    renderFooter = () => {
+      return (
+        <div className={styles.footer}>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -28,10 +43,6 @@ module.exports = function (WrappedComponent, options = {}) {
           </ul>
         </div>
       )
-    }
-
-    renderFooter = () => {
-      return (<div className={styles.footer} />)
     }
 
     render() {

@@ -33,14 +33,25 @@ export const googleSignUp = () => {
         reject(err);
       });
   });
-}
+};
+
+export const signOut = () => {
+  return new Promise((resolve, reject) => {
+    firebase.auth().signOut()
+      .catch((err) => {
+        log('[ERROR] signout', err);
+        reject(err);
+      });
+    resolve();
+  });
+};
 
 export const authCheck = () => {
   return new Promise((resolve, reject) => {
     firebase.auth().onAuthStateChanged((user) => {
       log('authCheck', user);
       if (user) resolve(true);
-      resolve(false)
+      resolve(false);
     });
   });
-}
+};

@@ -18,11 +18,11 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            component={Layout(HomePage, { hasHeader: true })}
+            component={Layout(HomePage, { hasHeader: true, hasFooter: true })}
           />
           <Route
             path="/signup"
-            component={Layout(SignupPage)}
+            component={Layout(SignupPage, { hasFooter: true })}
           />
         </Switch>
       </HashRouter>

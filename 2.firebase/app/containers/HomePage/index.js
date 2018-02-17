@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { authCheck } from 'Api/firebase';
 import styles from './styles.scss';
 
 class HomePage extends Component {
@@ -7,8 +8,11 @@ class HomePage extends Component {
     super(props);
     this.state = {};
   }
+
   componentDidMount() {
-    // if (!hasToken()) this.props.history.push('./signup');
+    authCheck().then((res) => {
+      if (!res) this.props.history.push('./signup');
+    });
   }
 
   render() {
