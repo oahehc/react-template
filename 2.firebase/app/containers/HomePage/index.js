@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { authCheck } from 'Api/firebase';
+import { authCheck, getUserName } from 'Api/firebase';
 import styles from './styles.scss';
 
 class HomePage extends Component {
@@ -18,7 +18,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className={styles.home}>
-        HomePage
+        {`Welcome, ${getUserName()}`}
       </div>
     );
   }

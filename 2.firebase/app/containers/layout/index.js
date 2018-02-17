@@ -32,16 +32,7 @@ module.exports = function (WrappedComponent, options = {}) {
 
     renderFooter = () => {
       return (
-        <div className={styles.footer}>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/signup">SignUp</Link>
-            </li>
-          </ul>
-        </div>
+        <div className={styles.footer}></div>
       )
     }
 
