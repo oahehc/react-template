@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { authCheck, getUserName } from 'Api/firebase';
+import { authCheck } from 'Api/firebase';
 import styles from './styles.scss';
 
-@connect(
-  (state) => ({
-    userState: state.get('userReducer'),
-  })
-)
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +16,9 @@ class HomePage extends Component {
   }
 
   render() {
-    console.log('xxx', this.props.userState);
     return (
       <div className={styles.home}>
-        {`Welcome, ${getUserName()}`}
+        {`Welcome, ${this.props.userState.get('userName')}`}
       </div>
     );
   }

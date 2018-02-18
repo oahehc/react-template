@@ -17,7 +17,6 @@ export const types = {
 };
 
 export default (state = initialState, action) => {
-  console.log('REDUCER', action);
   switch (action.type) {
     case types.SIGN_UP_REQUEST:
     case types.SIGN_OUT_REQUEST:
@@ -51,7 +50,7 @@ export const actions = {
     return new Promise((resolve, reject) => {
       googleSignUp().then((result) => {
         dispatch({
-          type: types.SIGN_UP_REQUEST,
+          type: types.SIGN_UP_SUCCESS,
           userName: result.user.displayName,
         });
         resolve();
@@ -72,7 +71,7 @@ export const actions = {
     return new Promise((resolve, reject) => {
       signOut().then(() => {
         dispatch({
-          type: types.SIGN_OUT_REQUEST,
+          type: types.SIGN_OUT_SUCCESS,
         });
         resolve();
       }).catch((err) => {

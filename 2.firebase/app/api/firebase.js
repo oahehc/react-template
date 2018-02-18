@@ -38,9 +38,3 @@ export const authCheck = () => {
     });
   });
 };
-
-export const getUserName = () => {
-  const userName = localStorage.getItem(userKey);
-  if (userName) return userName;
-  return guess;
-};

@@ -1,17 +1,34 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import userReducer from './userReducer';
 import thunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import Immutable, { Iterable } from 'immutable';
+import { combineReducers } from 'redux-immutable';
+import userReducer from './userReducer';
+import userInitialState from './userReducer/initialState';
 
-const middleware = [
-  thunk,
-];
 
-export default createStore(userReducer, compose(applyMiddleware(...middleware)));
+// merge reducer
+const reducers = {
+  userReducer,
+};
+
+// merge initialState
+const initialStates = Immutable.Record({
+  userReducer: userInitialState,
+});
+
+// set middlewares by environment
+const stateTransformer = (state) => {
+  if (Iterable.isIterable(state)) return state.toJS();
+  return state;
+};
+const middlewares = (isDev) ? [thunk, createLogger({ stateTransformer })] : [thunk];
+
+export default createStore(combineReducers(reducers, initialStates), Immutable.Map(), compose(applyMiddleware(...middlewares)));
 
 
 // import { devTools } from 'redux-devtools';
 // import { routerMiddleware } from 'react-router-redux';
-// import createLogger from 'redux-logger';
 // import configureReducers from '../reducers/configureReducers';
 // import promiseMiddleware from '../middlewares/promiseMiddleware';
 // import errorHandleMiddleware from '../middlewares/errorHandleMiddleware';

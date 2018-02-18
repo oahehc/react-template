@@ -108,6 +108,7 @@ module.exports = {
       '.scss', '.js', '.jsx', '.json',
     ],
     alias: {
+      Assets: path.resolve(appRootPath, './app/assets'),
       Api: path.resolve(appRootPath, './app/api'),
       Components: path.resolve(appRootPath, './app/components'),
       Containers: path.resolve(appRootPath, './app/containers'),
@@ -116,7 +117,7 @@ module.exports = {
       Styles: path.resolve(appRootPath, './app/styles'),
       Toolbox: path.resolve(appRootPath, './app/toolbox'),
       Utils: path.resolve(appRootPath, './app/utils'),
-    }
+    },
   },
   devtool: (isDev)
     ? 'source-map'

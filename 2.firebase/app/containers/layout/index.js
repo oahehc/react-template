@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as UserActions } from 'Redux/userReducer';
 import { Link } from 'react-router-dom';
+import Loading from 'Components/loading';
 import { signOut } from 'Api/firebase';
 import styles from './styles.scss';
 
@@ -14,7 +15,9 @@ module.exports = function (WrappedComponent, options = {}) {
   } = options;
 
   @connect(
-    (state) => ({}),
+    (state) => ({
+      userState: state.get('userReducer'),
+    }),
     (dispatch) => ({
       userActions: bindActionCreators(UserActions, dispatch),
     })
@@ -49,6 +52,7 @@ module.exports = function (WrappedComponent, options = {}) {
     render() {
       return (
         <div>
+          <Loading isLoading={this.props.userState.get('isLoading')} />
           {hasHeader && this.renderHeader()}
           <div className={styles.content}>
             <WrappedComponent {...this.props} />
