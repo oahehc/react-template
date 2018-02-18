@@ -11,7 +11,6 @@ import styles from './styles.scss';
 module.exports = function (WrappedComponent, options = {}) {
   const {
     hasHeader = false,
-    hasFooter = false
   } = options;
 
   @connect(
@@ -46,26 +45,19 @@ module.exports = function (WrappedComponent, options = {}) {
     renderHeader = () => {
       return (
         <div className={styles.header}>
-          <button onClick={() => this.handleSignOut()}>Sign Out</button>
+          <button onClick={() => this.handleSignOut()}>SIGN OUT</button>
         </div>
-      )
-    }
-
-    renderFooter = () => {
-      return (
-        <div className={styles.footer}></div>
       )
     }
 
     render() {
       return (
-        <div>
+        <div className={styles.layout}>
           <Loading isLoading={this.props.userState.get('isLoading')} />
           {hasHeader && this.renderHeader()}
           <div className={styles.content}>
             <WrappedComponent {...this.props} />
           </div>
-          {hasFooter && this.renderFooter()}
         </div>
       );
     }

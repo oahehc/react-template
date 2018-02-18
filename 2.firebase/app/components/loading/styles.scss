@@ -1,1 +1,7 @@
 @import "~Styles/variables";
+
+.loading{
+  @include fullScreenCenter;
+  background-color: rgba(100, 100, 100, 0.2);
+  z-index: $loadingIndex;
+}

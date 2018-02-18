@@ -1,1 +1,6 @@
 @import "~Styles/variables";
+
+.signup{
+  @include fullScreenCenter;
+  flex-direction: column;
+}

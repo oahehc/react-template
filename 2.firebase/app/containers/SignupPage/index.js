@@ -29,7 +29,8 @@ class SignupPage extends Component {
   render() {
     return (
       <div className={styles.signup}>
-        <button onClick={() => this.signUp()}>Sign Up</button>
+        <h1>Click Sign Up Button to Start</h1>
+        <button onClick={() => this.signUp()}>SIGN UP</button>
       </div>
     );
   }

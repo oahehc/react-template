@@ -19,14 +19,16 @@ class Loading extends Component {
 
   render() {
     const { isLoading } = this.props;
-    return (
-      <div>
-        {
-          isLoading &&
+    return (isLoading) ?
+      (
+        <div className={styles.loading}>
           <img src={require('Assets/loading.gif')} alt="loading..." />
-        }
-      </div>
-    );
+        </div>
+      )
+      :
+      (
+        <div></div>
+      );
   }
 }
 export default Loading;

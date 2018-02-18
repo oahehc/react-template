@@ -1,1 +1,6 @@
 @import "~Styles/variables";
+
+.home{
+  @include fullScreenCenter;
+  font-size: 3rem;
+}

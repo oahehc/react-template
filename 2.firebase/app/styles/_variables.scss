@@ -6,6 +6,14 @@ $bsLightblue: #5bc0de;
 $bsGreen: #5cb85c;
 $bsYellow: #f0ad4e;
 
+// size
+$headerHeight: 50px;
+
+// zIndex
+$contentIndex: 1;
+$headerIndex: 10;
+$loadingIndex: 100;
+
 // mixin
 $mobile: 768px;
 $pad: 992px;
