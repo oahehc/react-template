@@ -1,13 +1,6 @@
 
 TODO:
-> redux
-  "redux-devtools": "^3.3.1",
-  "redux-devtools-extension": "^1.0.0",
-  "redux-actions": "0.13.0",
-  "redux-undo": "0.6.1",
-  middelware: 
 > react-router-redux : https://github.com/reacttraining/react-router/tree/master/packages/react-router-redux
-> style
 > webpack
   - hot reload
   - venderDLL
@@ -20,16 +13,17 @@ TODO:
 ```
 /
 |- app
-|  |- containers   // page layout
-|  |- components   // component
-|  |- styles       // scss
-|  |- utils        // helper funtion
-|  |- api          // third party api
-|  |- redux        // 
+|  |- containers      // page layout
+|  |- components      // component
+|  |- styles          // style variable, mixin
+|  |- utils           // helper function
+|  |- api             // third party api
+|  |- redux           // 
 |     |- store.js
-|     |- _Reducer
-|  |- routes       // 
-|
+|     |- userReducer
+|  |- routes          // 
+|  |- index.js        // entry point 
+|  |- index.html      // 
 |
 ```
 
@@ -37,9 +31,9 @@ TODO:
 
 ## Script
 ```
-yarn dev        : 
-yarn dev:prod   : 
-yarn reinstall  : 
-yarn build      : 
-yarn deploy     : 
+yarn dev        : start dev-server
+yarn dev:prod   : start dev-server by production setting
+yarn reinstall  : reinstall node_modules
+yarn build      : build file
+yarn deploy     : deploy to firebase
 ```
