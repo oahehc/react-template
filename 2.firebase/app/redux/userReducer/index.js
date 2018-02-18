@@ -17,6 +17,7 @@ export const types = {
 };
 
 export default (state = initialState, action) => {
+  console.log('REDUCER', action);
   switch (action.type) {
     case types.SIGN_UP_REQUEST:
     case types.SIGN_OUT_REQUEST:
@@ -47,15 +48,19 @@ export const actions = {
     dispatch({
       type: types.SIGN_UP_REQUEST,
     });
-    googleSignUp().then((result) => {
-      dispatch({
-        type: types.SIGN_UP_REQUEST,
-        userName: result.user.displayName,
-      });
-    }).catch((err) => {
-      dispatch({
-        type: types.SIGN_UP_FAILURE,
-        err,
+    return new Promise((resolve, reject) => {
+      googleSignUp().then((result) => {
+        dispatch({
+          type: types.SIGN_UP_REQUEST,
+          userName: result.user.displayName,
+        });
+        resolve();
+      }).catch((err) => {
+        dispatch({
+          type: types.SIGN_UP_FAILURE,
+          err,
+        });
+        reject(err);
       });
     });
   },
@@ -64,14 +69,18 @@ export const actions = {
     dispatch({
       type: types.SIGN_OUT_REQUEST,
     });
-    signOut().then(() => {
-      dispatch({
-        type: types.SIGN_OUT_REQUEST,
-      });
-    }).catch((err) => {
-      dispatch({
-        type: types.SIGN_OUT_FAILURE,
-        err,
+    return new Promise((resolve, reject) => {
+      signOut().then(() => {
+        dispatch({
+          type: types.SIGN_OUT_REQUEST,
+        });
+        resolve();
+      }).catch((err) => {
+        dispatch({
+          type: types.SIGN_OUT_FAILURE,
+          err,
+        });
+        reject(err);
       });
     });
   },

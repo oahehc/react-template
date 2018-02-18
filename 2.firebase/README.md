@@ -3,7 +3,6 @@ TODO:
 > redux : signUp, LogOut, isLoading component
   "redux-immutable": "3.0.8",
   "redux-logger": "^2.7.4",
-  "redux-thunk": "2.1.0",
   "redux-actions": "0.13.0",
   "redux-undo": "0.6.1",
   "redux-devtools": "^3.3.1",

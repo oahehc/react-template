@@ -1,12 +1,16 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import userReducer from './userReducer';
+import thunk from 'redux-thunk';
 
-export default createStore(userReducer);
+const middleware = [
+  thunk,
+];
+
+export default createStore(userReducer, compose(applyMiddleware(...middleware)));
 
 
 // import { devTools } from 'redux-devtools';
 // import { routerMiddleware } from 'react-router-redux';
-// import thunk from 'redux-thunk';
 // import createLogger from 'redux-logger';
 // import configureReducers from '../reducers/configureReducers';
 // import promiseMiddleware from '../middlewares/promiseMiddleware';

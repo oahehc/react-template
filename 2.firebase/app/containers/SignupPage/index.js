@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as UserActions } from 'Redux/userReducer';
-import { googleSignUp, authCheck } from 'Api/firebase';
+import { authCheck } from 'Api/firebase';
 import styles from './styles.scss';
 
 @connect(
-  (state) => ({
-    userState: state.get('userReducer'),
-  }),
+  (state) => ({}),
   (dispatch) => ({
-    actions: {
-      user: bindActionCreators(UserActions, dispatch),
-    }
+    userActions: bindActionCreators(UserActions, dispatch),
   })
 )
 class SignupPage extends Component {
@@ -28,9 +24,10 @@ class SignupPage extends Component {
   }
 
   signUp = () => {
-    googleSignUp().then((res) => {
-      this.props.history.push('/');
-    })
+    this.props.userActions.signUp()
+      .then((res) => {
+        this.props.history.push('/');
+      });
   }
 
   render() {

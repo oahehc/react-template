@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actions as UserActions } from 'Redux/userReducer';
 import { Link } from 'react-router-dom';
 import { signOut } from 'Api/firebase';
 import styles from './styles.scss';
@@ -10,6 +13,12 @@ module.exports = function (WrappedComponent, options = {}) {
     hasFooter = false
   } = options;
 
+  @connect(
+    (state) => ({}),
+    (dispatch) => ({
+      userActions: bindActionCreators(UserActions, dispatch),
+    })
+  )
   class Layout extends Component {
     constructor(props) {
       super(props);
@@ -17,9 +26,10 @@ module.exports = function (WrappedComponent, options = {}) {
     }
 
     handleSignOut = () => {
-      signOut().then((res) => {
-        this.props.history.push('./signup');
-      })
+      this.props.userActions.signOut()
+        .then((res) => {
+          this.props.history.push('./signup');
+        })
     }
 
     renderHeader = () => {
