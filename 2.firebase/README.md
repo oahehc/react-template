@@ -16,7 +16,6 @@ TODO:
 |- app
 |  |- containers   // page layout
 |  |- components   // component
-|  |- toolbox      // common use component
 |  |- styles       // scss
 |  |- utils        // helper funtion
 |  |- api          // third party api

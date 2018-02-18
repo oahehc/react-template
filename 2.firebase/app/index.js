@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Layout from 'Containers/Layout';
-import HomePage from 'Containers/HomePage';
-import SignupPage from 'Containers/SignupPage';
+import Routes from 'Routes';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,19 +10,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={Layout(HomePage, { hasHeader: true })}
-          />
-          <Route
-            path="/signup"
-            component={Layout(SignupPage)}
-          />
-        </Switch>
-      </BrowserRouter>
+      <Routes />
     );
   }
 }
