@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { googleSignUp, signOut } from 'Api/firebase';
+import { googleSignUp, signOut, authState } from 'Api/firebase';
 
 const userKey = 'USER_NAME';
 const defaultName = 'GUESS';
@@ -14,18 +14,26 @@ export const types = {
   SIGN_OUT_REQUEST: 'user/SIGN_OUT_REQUEST',
   SIGN_OUT_SUCCESS: 'user/SIGN_OUT_SUCCESS',
   SIGN_OUT_FAILURE: 'user/SIGN_OUT_FAILURE',
+
+  USER_INIT: 'user/USER_INIT',
+  USER_INIT_REQUEST: 'user/USER_INIT_REQUEST',
+  USER_INIT_SUCCESS: 'user/USER_INIT_SUCCESS',
+  USER_INIT_FAILURE: 'user/USER_INIT_FAILURE',
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case types.SIGN_UP_REQUEST:
     case types.SIGN_OUT_REQUEST:
+    case types.USER_INIT_REQUEST:
       return state.set('isLoading', true);
     case types.SIGN_UP_FAILURE:
     case types.SIGN_OUT_FAILURE:
+    case types.USER_INIT_FAILURE:
       return state.set('isLoading', false);
 
     case types.SIGN_UP_SUCCESS:
+    case types.USER_INIT_SUCCESS:
       localStorage.setItem(userKey, action.userName);
       return state
         .set('isLoading', false)
@@ -77,6 +85,27 @@ export const actions = {
       }).catch((err) => {
         dispatch({
           type: types.SIGN_OUT_FAILURE,
+          err,
+        });
+        reject(err);
+      });
+    });
+  },
+
+  userInit: () => (dispatch, getState) => {
+    dispatch({
+      type: types.USER_INIT_REQUEST,
+    });
+    return new Promise((resolve, reject) => {
+      authState().then((user) => {
+        dispatch({
+          type: types.USER_INIT_SUCCESS,
+          userName: (user) ? user.displayName : defaultName,
+        });
+        resolve(user);
+      }).catch((err) => {
+        dispatch({
+          type: types.USER_INIT_FAILURE,
           err,
         });
         reject(err);

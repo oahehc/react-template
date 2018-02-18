@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as UserActions } from 'Redux/userReducer';
-import { authCheck } from 'Api/firebase';
 import styles from './styles.scss';
 
 @connect(
@@ -17,11 +16,8 @@ class SignupPage extends Component {
     super(props);
     this.state = {};
   }
-  componentDidMount() {
-    authCheck().then((res) => {
-      if (res) this.props.history.push('/');
-    });
-  }
+
+  componentDidMount() { }
 
   signUp = () => {
     this.props.userActions.signUp()

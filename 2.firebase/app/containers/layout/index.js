@@ -28,6 +28,14 @@ module.exports = function (WrappedComponent, options = {}) {
       this.state = {};
     }
 
+    componentDidMount() {
+      this.props.userActions.userInit()
+        .then((user) => {
+          if (user) this.props.history.push('/');
+          else this.props.history.push('./signup');
+        });
+    }
+
     handleSignOut = () => {
       this.props.userActions.signOut()
         .then((res) => {
