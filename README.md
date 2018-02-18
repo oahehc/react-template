@@ -4,16 +4,12 @@
 * clone from : https://github.com/ctrlplusb/react-universally
 
 ## 2. firebase
-* react + webpack + firebase
+* react/redux/router + firebase + webpack + eslint
 
 
 ---
-
-## React-Redux
-## React-Router
 ## Server-Side-Render
-## css module / themr...
-## eslint
+## css themr...
 ## i18n
 ## SEO
 ## .env_x
