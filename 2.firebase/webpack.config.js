@@ -137,11 +137,20 @@ module.exports = {
     }),
     new AutoDllPlugin({
       inject: true,
+      debug: isDev,
       filename: '[name]_[hash].js',
+      path: './dll',
       entry: {
         vendor: [
           'react',
           'react-dom',
+          'lodash',
+          'immutable',
+          'react-redux',
+          'react-router-dom',
+          'redux',
+          'redux-immutable',
+          'redux-thunk',
         ],
       },
     }),
