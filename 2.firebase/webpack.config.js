@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const AutoDllPlugin = require('autodll-webpack-plugin');
 const path = require('path');
 const appRootPath = require('app-root-dir').get();
 
@@ -79,7 +80,13 @@ module.exports = {
                   localIdentName: '[name]_[local]_[hash:base64:5]',
                 },
               },
-              'postcss-loader', {
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: true,
+                },
+              },
+              {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: true,
@@ -123,7 +130,21 @@ module.exports = {
     ? 'source-map'
     : 'hidden-source-map', // eval
   plugins: removeEmpty([
-    new HtmlWebpackPlugin({ template: `${__dirname}/app/index.html`, filename: 'index.html', inject: 'body' }),
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/app/index.html`,
+      filename: 'index.html',
+      inject: 'body',
+    }),
+    new AutoDllPlugin({
+      inject: true,
+      filename: '[name]_[hash].js',
+      entry: {
+        vendor: [
+          'react',
+          'react-dom',
+        ],
+      },
+    }),
     new webpack.DefinePlugin({ isDev }),
     (!isDev)
       ? new ExtractTextPlugin({ filename: '[name]-[hash].css', allChunks: true })

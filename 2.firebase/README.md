@@ -1,14 +1,15 @@
-
-TODO:
-> react-router-redux : https://github.com/reacttraining/react-router/tree/master/packages/react-router-redux
+## TODO:
 > webpack
   - hot reload
-  - venderDLL
 > eslint
   - arrow function
   - decorator
----
 
+---
+## What's Next
+> react-router-redux : https://github.com/reacttraining/react-router/tree/master/packages/react-router-redux
+
+---
 ## Project Structure
 ```
 /
