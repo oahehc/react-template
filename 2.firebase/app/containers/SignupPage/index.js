@@ -29,7 +29,7 @@ class SignupPage extends Component {
   render() {
     return (
       <div className={styles.signup}>
-        <h1>Click Sign Up Button to Start</h1>
+        <h1>Sign Up By Google Account</h1>
         <button onClick={() => this.signUp()}>SIGN UP</button>
       </div>
     );

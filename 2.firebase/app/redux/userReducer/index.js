@@ -2,7 +2,6 @@ import initialState from './initialState';
 import { googleSignUp, signOut, authState } from 'Api/firebase';
 
 const userKey = 'USER_NAME';
-const defaultName = 'GUESS';
 
 export const types = {
   SIGN_UP: 'user/SIGN_UP',
@@ -43,7 +42,7 @@ export default (state = initialState, action) => {
       localStorage.removeItem(userKey);
       return state
         .set('isLoading', false)
-        .set('userName', defaultName);
+        .set('userName', '');
 
     default:
       return state;
@@ -100,7 +99,7 @@ export const actions = {
       authState().then((user) => {
         dispatch({
           type: types.USER_INIT_SUCCESS,
-          userName: (user) ? user.displayName : defaultName,
+          userName: (user) ? user.displayName : '',
         });
         resolve(user);
       }).catch((err) => {
