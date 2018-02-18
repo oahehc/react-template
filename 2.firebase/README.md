@@ -1,10 +1,18 @@
 
 TODO:
-> redux : 
+> redux : signUp, LogOut, isLoading component
+  "redux-immutable": "3.0.8",
+  "redux-logger": "^2.7.4",
+  "redux-thunk": "2.1.0",
+  "redux-actions": "0.13.0",
+  "redux-undo": "0.6.1",
+  "redux-devtools": "^3.3.1",
+  "redux-devtools-extension": "^1.0.0",
+  middelware: 
 > react-router-redux : https://github.com/reacttraining/react-router/tree/master/packages/react-router-redux
 > webpack
   - hot reload
-  - vender_bundle
+  - venderDLL
 > eslint
   - arrow function
   - decorator
@@ -20,8 +28,8 @@ TODO:
 |  |- utils        // helper funtion
 |  |- api          // third party api
 |  |- redux        // 
-|     |- store
-|     |- reducers
+|     |- store.js
+|     |- _Reducer
 |  |- routes       // 
 |
 |

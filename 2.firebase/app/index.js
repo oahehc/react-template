@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import Routes from 'Routes';
+import store from 'Redux/store';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +12,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <Routes />
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     );
   }
 }

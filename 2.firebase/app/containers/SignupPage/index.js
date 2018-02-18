@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actions as UserActions } from 'Redux/userReducer';
 import { googleSignUp, authCheck } from 'Api/firebase';
 import styles from './styles.scss';
 
+@connect(
+  (state) => ({
+    userState: state.get('userReducer'),
+  }),
+  (dispatch) => ({
+    actions: {
+      user: bindActionCreators(UserActions, dispatch),
+    }
+  })
+)
 class SignupPage extends Component {
   constructor(props) {
     super(props);

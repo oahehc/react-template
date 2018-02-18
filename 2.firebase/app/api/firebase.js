@@ -9,7 +9,6 @@ export const googleSignUp = () => {
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
         log('google signup success', result);
-        localStorage.setItem(userKey, result.user.displayName);
         resolve(result);
       })
       .catch((err) => {
@@ -26,7 +25,6 @@ export const signOut = () => {
         log('[ERROR] signout', err);
         reject(err);
       });
-    localStorage.removeItem(userKey);
     resolve();
   });
 };
@@ -46,24 +44,3 @@ export const getUserName = () => {
   if (userName) return userName;
   return guess;
 };
-
-/*
-export const fbSignUp = () => {
-  return new Promise((resolve, reject) => {
-    const provider = new firebase
-      .auth
-      .FacebookAuthProvider();
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        log('fb signup success', result);
-        resolve(result);
-      })
-      .catch((err) => {
-        log('[ERROR] fb signup', err);
-        reject(err);
-      });
-  });
-}
-*/

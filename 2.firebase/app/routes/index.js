@@ -5,6 +5,11 @@ import HomePage from 'Containers/HomePage';
 import SignupPage from 'Containers/SignupPage';
 
 class Routes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <BrowserRouter>
