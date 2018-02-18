@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import Immutable, { Iterable } from 'immutable';
 import { combineReducers } from 'redux-immutable';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import userReducer from './userReducer';
 import userInitialState from './userReducer/initialState';
 
@@ -22,9 +23,12 @@ const stateTransformer = (state) => {
   if (Iterable.isIterable(state)) return state.toJS();
   return state;
 };
-const middlewares = (isDev) ? [thunk, createLogger({ stateTransformer })] : [thunk];
+const middlewares = (isDev) ?
+  composeWithDevTools(applyMiddleware(thunk, createLogger({ stateTransformer })))
+  :
+  compose(applyMiddleware(thunk));
 
-export default createStore(combineReducers(reducers, initialStates), Immutable.Map(), compose(applyMiddleware(...middlewares)));
+export default createStore(combineReducers(reducers, initialStates), Immutable.Map(), middlewares);
 
 
 // import { devTools } from 'redux-devtools';
