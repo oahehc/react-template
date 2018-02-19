@@ -25,6 +25,7 @@
 |  |- routes          // 
 |  |- index.js        // entry point 
 |  |- index.html      // 
+|  |- template        // template for component and reducer
 |
 ```
 
