@@ -1,3 +1,25 @@
+# STRUCTURE
+| |- app/              main folder
+|    |- containers/    components which are connected to the redux store, how things work
+|    |- components/    dumb React components which depend on containers for data, how things look
+|    |- images/
+|    |- tests/
+|    |- translations/  json for will languages
+|    |- utils/         helper function   
+| |- internals/        Configuration, generators and templates
+|    |- generators/    scaffold out new components, containers and routes
+|    |- mocks/         mocks which Jest uses when testing your app
+|    |- scripts/       npm scripts
+|    |- templates/
+|    |- testing/
+|    |- webpack/
+| |- server/           server configuration 
+| |- docs/             documents
+
+
+
+
+---
 <img src="https://raw.githubusercontent.com/react-boilerplate/react-boilerplate-brand/master/assets/banner-metal-optimized.jpg" alt="react boilerplate banner" align="center" />
 
 <br />
