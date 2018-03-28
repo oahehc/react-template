@@ -8,6 +8,7 @@
 |    |- utils/         helper function   
 | |- internals/        Configuration, generators and templates
 |    |- generators/    scaffold out new components, containers and routes
+                       *https://github.com/amwmedia/plop
 |    |- mocks/         mocks which Jest uses when testing your app
 |    |- scripts/       npm scripts
 |    |- templates/
